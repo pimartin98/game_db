@@ -1,4 +1,4 @@
-CREATE TABLE game(id integer not null  primary key AUTO_INCREMENT, 
+CREATE TABLE game(id integer not null  primary key, 
 		title varchar(100) not null 
 			constraint "title length"
 			check(length(title) <= 100),
@@ -23,7 +23,7 @@ create table game_genre(genre_id integer not null,
 			foreign key(genre_id) references genre(id)
 			primary key(game_id, genre_id)
 );
-create table platform(id integer not null primary key AUTO_INCREMENT, 
+create table platform(id integer not null primary key, 
 			name varchar(30) not null 
 				constraint "publisher length"
                                 check(coalesce(length(name),0)<=30));

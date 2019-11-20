@@ -14,50 +14,51 @@ soup = BeautifulSoup(page, "html.parser")
 #see on the website
 
 
-#x = 1
-#while(x < 6): 
-#	url = "http://www.jeuxvideo.com/tous-les-jeux/?p="+str(x)
-#	requete = requests.get(url)
-#	page = requete.content
-#	soup = BeautifulSoup(page, "html.parser")
+x = 1
+while(x < 6): 
+	url = "http://www.jeuxvideo.com/tous-les-jeux/?p="+str(x)
+	requete = requests.get(url)
+	page = requete.content
+	soup = BeautifulSoup(page, "html.parser")
+	print('Scraping page ' + str(x))
 
-game_list = []
-platform_list = []
+	game_list = []
+	platform_list = []
 
-#for game_title in TABLE game 
-for game_title in soup.select(".gameTitleLink__196nPy"):
-	game_list.append(game_title.text)
-	print(game_title.text)
+	#for game_title in TABLE game 
+	for game_title in soup.select(".gameTitleLink__196nPy"):
+		game_list.append(game_title.text)
+		print(game_title.text)
 
 
-#for platform's name (TABLE platform)
-for platform_name in soup.select(".platforms__2MTyZV.gamePlatforms__27bTXa"):
-	platform_list.append(platform_name.text)
-	print(platform_name.text)
+	#for platform's name (TABLE platform)
+	for platform_name in soup.select(".platforms__2MTyZV.gamePlatforms__27bTXa"):
+		platform_list.append(platform_name.text)
+		print(platform_name.text)
 
-"""
-liste_game_platform = []
-for i in range(len(game_list)):
-	liste_game_platform.append(game_list[i]+"$$"+platform_list[i]) 
-	
-print(liste_game_platform)
-"""
+	"""
+	liste_game_platform = []
+	for i in range(len(game_list)):
+		liste_game_platform.append(game_list[i]+"$$"+platform_list[i]) 
+		
+	print(liste_game_platform)
+	"""
 
-#for game's year_released (TABLE game) 
-for year_released in soup.select(".releaseDate__1RvUmc"):
-	print(year_released.text)
+	#for game's year_released (TABLE game) 
+	for year_released in soup.select(".releaseDate__1RvUmc"):
+		print(year_released.text)
 
-#don t know yet where to put the description into de DATABASES
-for description in soup.select(".description__1-Pqha"):
-	print(description.text)
+	#don t know yet where to put the description into de DATABASES
+	for description in soup.select(".description__1-Pqha"):
+		print(description.text)
 
 #get the href in tag class = "gameTitleLink..." to get jeux-nb and then the url 
-#http://www.jeuxvideo.com/tous-les-jeux/jeux-nb/#details" will give the publisher of the game in      class = ".xXx gameCharacteristicsDetailed__characValue "
+#http://www.jeuxvideo.com/tous-les-jeux/jeux-nb/#details" will give the publisher of the game in	  class = ".xXx gameCharacteristicsDetailed__characValue "
 
 #for genre's row of TABLE genre :
 #same url of publisher but in class=".gameChracteristicsDetailed__characValue"
 
-#x+=1
+	x+=1
 
 
 
@@ -66,7 +67,7 @@ for description in soup.select(".description__1-Pqha"):
 
 
 #connection to the database
-conn = sqlite3.connect('/home/martin/Bureau/DB_project/dbtest1.sqlite')#path to the Data Base
+conn = sqlite3.connect('game_db.db')#path to the Data Base
 
 
 
