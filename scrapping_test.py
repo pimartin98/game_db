@@ -4,7 +4,10 @@ import requests
 from bs4 import BeautifulSoup
 import sqlite3
 
-
+# Retabbing instructions : 
+# :set noexpandtab (indent with tabs not spaces)
+# :set ts=4 (size of tabs in spaces)
+# :%retab! (retab the whole document)
 
 requete = requests.get("http://www.jeuxvideo.com/tous-les-jeux/")
 page = requete.content
